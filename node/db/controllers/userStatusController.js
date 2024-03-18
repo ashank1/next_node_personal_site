@@ -20,7 +20,7 @@ const addUserStatus = async (req, res) => {
 
 const updateUserStatus = async (req, res) => {
     try {
-        const status = await Status.findById(req.params.uId);
+        const status = await UserStatus.find({ uId: req.params.uId});
         if (status == null) {
           return res.status(404).json({ message: 'Status of User not found' });
         }

@@ -25,6 +25,7 @@ async function updateStatus(data) {
         userStatus[0].discord.status = data.discord.status
         userStatus[0].discord.activity = data.discord.activity
     }
+    //console.log(data)
     const res = await UserStatus.updateOne({uId: data.uId}, {steam: userStatus[0].steam, discord: userStatus[0].discord})
 }
 

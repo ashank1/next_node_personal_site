@@ -18,8 +18,8 @@ router.put('/userstatus/:id', userStatusController.updateUserStatus)
 
 //links routes
 router.get('/links', linksController.getLinks)
-router.get('/user/:id', linksController.getLinksById)
+router.get('/links/:id', linksController.getLinksById)
 router.post('/links', linksController.addLink)
-//router.put('/links/:id', linksController.updateUserStatus)
+router.put('/links/:id', linksController.updateLink)
 
 module.exports = router;

@@ -1,0 +1,13 @@
+node/node_modules/
+next/node_modules
+build/Release
+
+
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+.next
+out
