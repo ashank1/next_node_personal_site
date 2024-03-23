@@ -11,3 +11,4 @@ build/Release
 
 .next
 out
+/node/node_modules
