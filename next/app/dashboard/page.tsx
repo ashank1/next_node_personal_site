@@ -1,13 +1,13 @@
-'use client'
 import React, { Suspense } from 'react'
-import TabsComponent from './../../components/tabsComponent'
-import EditTabsComponent from './../../components/editTabsComponent'
+import DashboardContent from './dashContent'
 import AvatarComponent from '@/components/avatarComponent';
-import { useState } from 'react';
+import TabsComponent from '../../components/tabsComponent'
 import { Popover, PopoverTrigger, PopoverContent, Button } from '@nextui-org/react';
+import SpotifyComponent from '@/components/spotifyComponent';
 
 export default async function dashboard() {
-    let data = [
+    
+    let tabData: EtabData =  [
         {
           tabId: 1,
           tabLabel: "Gaming",
@@ -22,6 +22,86 @@ export default async function dashboard() {
             image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
             link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
           },
+          {
+            id: 3,
+            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
+            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
+          },
+          {
+            id: 4,
+            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
+            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
+          },
+          {
+            id: 5,
+            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
+            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
+          },
+          {
+            id: 6,
+            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
+            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
+          },
+          {
+            id: 7,
+            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
+            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
+          },
+          {
+            id: 8,
+            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
+            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
+          },
+          {
+            id: 9,
+            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
+            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
+          },
+          {
+            id: 10,
+            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
+            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
+          },
+          {
+            id: 11,
+            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
+            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
+          },
+          {
+            id: 12,
+            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
+            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
+          },
+          {
+            id: 13,
+            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
+            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
+          },
+          {
+            id: 14,
+            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
+            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
+          },
+          {
+            id: 15,
+            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
+            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
+          },
+          {
+            id: 16,
+            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
+            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
+          },
+          {
+            id: 17,
+            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
+            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
+          },
+          {
+            id: 18,
+            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
+            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
+          }
           ]
         },
         {
@@ -78,41 +158,28 @@ export default async function dashboard() {
       
 
   return (
-    <div className="relative h-full w-full">
-    <div className={`z-0 grid grid-cols-6 gap-1
-        w-lvw h-lvh
+    <div id='dashboard-page' className="relative h-dvh w-dvw max-[1218px]:pr-6">
+      <div id='dashboard-container'className={`z-0 grid grid-cols-6 gap-1
+        w-full h-full
         p-4`}>
-        <div className='col-span-1
+        <div id='dashboard-left'
+        className='col-span-1
         flex justify-center 
         bg-black rounded-3xl pt-4'>
         <Suspense>
             <AvatarComponent userStatus={userStatus} />
         </Suspense>
         </div>
-        <div className='col-span-5 
+        <div id='dashboard-body' 
+        className='col-span-5
         bg-black rounded-3xl
+        h-full w-full
         '>
-        <Suspense>
-            <TabsComponent data={data} />
-        </Suspense>
+          <DashboardContent data={tabData}/>
         </div>
         
-    </div>
-    <div className='flex justify-center absolute right-4 bottom-28 z-1 h-12 w-[62px] bg-emerald-600 rounded-l-2xl p-1 shadow-neon-sm shadow-emerald-700'>
-    <Popover placement="left-start">
-        <PopoverTrigger>
-            <Button><img src="https://open.spotifycdn.com/cdn/images/favicon32.b64ecc03.png"/></Button>
-        </PopoverTrigger>
-        <PopoverContent>
-            <div className="w-[660px] h-65">
-                <iframe className="border-radius:12px" 
-                src="https://open.spotify.com/embed/playlist/2iJebbThuEZlgBKZqndfTc?utm_source=generator" 
-                width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                loading="lazy"></iframe>
-            </div>
-        </PopoverContent>
-    </Popover>
-    </div>
+      </div>
+      <SpotifyComponent />
     </div>
   )
 }
