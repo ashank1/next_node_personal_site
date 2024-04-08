@@ -11,7 +11,7 @@ const getLinks = async (req, res) => {
 }
 
 const getLinksById = async (req, res) => {
-  console.log(req.params.id)
+  //console.log(req.params.id)
     try {
       const link = await Link.findById(req.params.id);
       if (link == null) {

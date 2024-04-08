@@ -5,7 +5,7 @@ export default function spotifyComponent() {
   return (
     <div className='
     flex justify-center 
-    absolute right-4 bottom-28 z-1 
+    fixed right-0 bottom-28 z-1 
     h-12 w-[62px] 
     bg-emerald-600 rounded-l-2xl p-1 
     shadow-neon-sm shadow-emerald-700'>

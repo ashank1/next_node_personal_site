@@ -10,12 +10,31 @@ const getUserStatus = async (req, res) => {
     }
 }
 
+const getUserStatusById = async (req, res) => {
+    try {
+      const userStatus = await UserStatus.find({ uId: req.params.id});
+      if (userStatus == null) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+      res.json(userStatus);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  };
+
 const addUserStatus = async (req, res) => {
     const userStatus = new UserStatus({
         uId: req.body.uId,
         steam: req.body.steam,
         discord: req.body.discord
-    });
+    })
+    try {
+        const newUserStatus = await userStatus.save();
+        console.log("User's Status Added: ", req.body)
+        res.status(201).json(newUserStatus);
+      } catch (err) {
+        res.status(400).json({ message: err.message });
+      }
 }
 
 const updateUserStatus = async (req, res) => {
@@ -42,5 +61,5 @@ const updateUserStatus = async (req, res) => {
 }
 
 module.exports = {
-    getUserStatus, addUserStatus, updateUserStatus
+    getUserStatus, addUserStatus, updateUserStatus, getUserStatusById
 }

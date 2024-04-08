@@ -9,7 +9,7 @@ const getUsers = async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 }
-
+//User by ID
 const getUserById = async (req, res) => {
   try {
     const user = await User.find({ uId: req.params.id});
@@ -28,7 +28,14 @@ const addUser = async (req, res) => {
         username: req.body.username,
         email: req.body.email,
         password: req.body.password
-    });
+    })
+    try {
+      const newUser = await user.save();
+      console.log("User Added: ", req.body)
+      res.status(201).json(newUser);
+    } catch (err) {
+      res.status(400).json({ message: err.message });
+    }
 }
 
 const updateUser = async (req, res) => {

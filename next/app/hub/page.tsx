@@ -1,11 +1,14 @@
-import React, { Suspense } from 'react'
-import DashboardContent from './dashContent'
-import AvatarComponent from '@/components/avatarComponent';
-import TabsComponent from '../../components/tabsComponent'
-import { Popover, PopoverTrigger, PopoverContent, Button } from '@nextui-org/react';
-import SpotifyComponent from '@/components/spotifyComponent';
 
-export default async function dashboard() {
+import React, { Suspense, useEffect, useState } from 'react'
+import HubContent from './hubContent'
+import ThemePicker from '@/components/themePicker';
+import AvatarComponent from '@/components/avatarComponent';
+import SpotifyComponent from '@/components/spotifyComponent';
+import { Spinner } from '@nextui-org/react';
+import { error } from 'console';
+import HubNav from './hubNav';
+
+export default async function hub() {
     
     let tabData: EtabData =  [
         {
@@ -154,36 +157,40 @@ export default async function dashboard() {
           }
       ];
       let userStatus = await getData();
+      const isUserStatusLoading = userStatus === undefined;
+      
       
       
 
   return (
-    <div id='dashboard-page' className="relative h-dvh w-dvw max-[1218px]:pr-6">
-      <div id='dashboard-container'className={`z-0 grid grid-cols-6 gap-1
+    <div id='hub-page' className="relative h-[100vh] w-[100vw] bg-background">
+      <div id='hub-container'className={`z-0 flex flex-row gap-1
         w-full h-full
         p-4`}>
-        <div id='dashboard-left'
-        className='col-span-1
-        flex justify-center 
-        bg-black rounded-3xl pt-4'>
-        <Suspense>
-            <AvatarComponent userStatus={userStatus} />
-        </Suspense>
-        </div>
-        <div id='dashboard-body' 
-        className='col-span-5
-        bg-black rounded-3xl
-        h-full w-full
+        <div id='hub-left'
+        className='h-full w-[10%] min-w-28
+        bg-cover border-2 border-bold/75 rounded-3xl pt-4
+        bg-opacity-10 backdrop-filter backdrop-blur-lg
+        drop-shadow-2xl shadow-2xl
         '>
-          <DashboardContent data={tabData}/>
+        <HubNav data={userStatus} />
         </div>
-        
+        <div id='hub-body' 
+        className='h-full w-[90%]
+        min-w-[555px] border-2 border-bold/75
+        bg-cover rounded-3xl
+        bg-opacity-10 backdrop-filter backdrop-blur-lg
+        drop-shadow-2xl shadow-2xl
+        '>
+          <HubContent data={tabData}/>
+        </div>
       </div>
       <SpotifyComponent />
     </div>
   )
 }
 //
+
 export async function getData() {
     
     //const uId = "123"

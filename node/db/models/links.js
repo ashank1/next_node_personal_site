@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const linkSchema = new mongoose.Schema({
-    _uId: {
+    uId: {
         type: Number
     },
     link: {
