@@ -13,7 +13,7 @@ const getLinks = async (req, res) => {
 const getLinksById = async (req, res) => {
   //console.log(req.params.id)
     try {
-      const link = await Link.findById(req.params.id);
+      const link = await Link.find({uId: req.params.id});
       if (link == null) {
         return res.status(404).json({ message: 'User\'s links not found' });
       }
@@ -33,7 +33,6 @@ const addLink = async (req, res) => {
 }
 
 const updateLink = async (req, res) => {
-  console.log(req.body)
   try {
     const link = await Link.findById(req.params.id);
     if (link == null) {
@@ -41,9 +40,6 @@ const updateLink = async (req, res) => {
     }
     if (req.body.link != null) {
       link.link = req.body.link
-    }
-    if (req.body.site != null) {
-      link.site = req.body.site
     }
     const updatedLink = await link.save();
     res.json(updatedLink);

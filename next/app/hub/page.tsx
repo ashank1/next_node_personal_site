@@ -1,167 +1,24 @@
 
+'use server'
 import React, { Suspense, useEffect, useState } from 'react'
 import HubContent from './hubContent'
-import ThemePicker from '@/components/themePicker';
-import AvatarComponent from '@/components/avatarComponent';
 import SpotifyComponent from '@/components/spotifyComponent';
-import { Spinner } from '@nextui-org/react';
-import { error } from 'console';
 import HubNav from './hubNav';
 
 export default async function hub() {
-    
-    let tabData: EtabData =  [
-        {
-          tabId: 1,
-          tabLabel: "Gaming",
-          tabContent: 
-          [{
-            id: 1,
-            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
-            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
-          },
-          {
-            id: 2,
-            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
-            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
-          },
-          {
-            id: 3,
-            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
-            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
-          },
-          {
-            id: 4,
-            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
-            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
-          },
-          {
-            id: 5,
-            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
-            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
-          },
-          {
-            id: 6,
-            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
-            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
-          },
-          {
-            id: 7,
-            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
-            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
-          },
-          {
-            id: 8,
-            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
-            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
-          },
-          {
-            id: 9,
-            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
-            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
-          },
-          {
-            id: 10,
-            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
-            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
-          },
-          {
-            id: 11,
-            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
-            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
-          },
-          {
-            id: 12,
-            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
-            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
-          },
-          {
-            id: 13,
-            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
-            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
-          },
-          {
-            id: 14,
-            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
-            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
-          },
-          {
-            id: 15,
-            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
-            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
-          },
-          {
-            id: 16,
-            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
-            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
-          },
-          {
-            id: 17,
-            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
-            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
-          },
-          {
-            id: 18,
-            image: "https://yt3.googleusercontent.com/ytc/AIdro_nu36wcGaG05pWAgqZtGdOMAXEZqupZnz__M0v0=s176-c-k-c0x00ffffff-no-rj",
-            link: "https://www.youtube.com/@ThePrimeTimeagen/videos"
-          }
-          ]
-        },
-        {
-          tabId: 2,
-          tabLabel: "Music",
-          tabContent: 
-          [{
-            id: 1,
-            image: "url",
-            link: "link"
-          },
-          {
-            id: 2,
-            image: "url",
-            link: "link"
-          },
-          ]
-        },
-        {
-          tabId: 3,
-          tabLabel: "Videos",
-          tabContent: 
-          [{
-            id: 1,
-            image: "url",
-            link: "link"
-          },
-          {
-            id: 2,
-            image: "url",
-            link: "link"
-          },
-          ]
-        },
-        {
-            tabId: 4,
-            tabLabel: "Stuffs",
-            tabContent: 
-            [{
-              id: 1,
-              image: "url",
-              link: "link"
-            },
-            {
-              id: 2,
-              image: "url",
-              link: "link"
-            },
-            ]
-          }
-      ];
-      let userStatus = await getData();
-      const isUserStatusLoading = userStatus === undefined;
-      
-      
-      
-
+  let userID = 123;
+  let tabData: EtabData = await getTabContent(userID);
+  let userStatus: any = await getStatusData(userID);
+  let userLink: any = await getUserLinks(userID)
+  let userNavLink: any = await getNavContent(userID)
+  let spotifyLink = ""; let steamLink = "";
+  userLink.forEach((link: any) => {
+    if(link.site == "spotify") {
+      spotifyLink = link.link
+    }else if(link.site == "steam") {
+      steamLink = link.link
+    }
+  })
   return (
     <div id='hub-page' className="relative h-[100vh] w-[100vw] bg-background">
       <div id='hub-container'className={`z-0 flex flex-row gap-1
@@ -173,7 +30,7 @@ export default async function hub() {
         bg-opacity-10 backdrop-filter backdrop-blur-lg
         drop-shadow-2xl shadow-2xl
         '>
-        <HubNav data={userStatus} />
+          <HubNav userStatus={userStatus} steamLink={steamLink} userNavLink={userNavLink}/>
         </div>
         <div id='hub-body' 
         className='h-full w-[90%]
@@ -182,19 +39,72 @@ export default async function hub() {
         bg-opacity-10 backdrop-filter backdrop-blur-lg
         drop-shadow-2xl shadow-2xl
         '>
-          <HubContent data={tabData}/>
+          <HubContent tabData={tabData} userLink={userLink} userNavLink={userNavLink}/>
         </div>
       </div>
-      <SpotifyComponent />
+      <SpotifyComponent spotifyLink={spotifyLink}/>
     </div>
   )
 }
 //
 
-export async function getData() {
-    
-    //const uId = "123"
-    let res = await fetch('http://5.135.163.229:3002/userstatus/', {next: {revalidate: 60}})
-    const data = await res.json()
-    return data[0]
+export async function getStatusData(userID: number) {
+  let res = await fetch(`http://5.135.163.229:3002/userstatus/${userID}`, {next: {revalidate: 10}})
+  const data = await res.json()
+  return data
+}
+//
+export async function getTabContent(userID: number) {
+  let res = await fetch(`http://5.135.163.229:3002/tabs/${userID}`, {next: {revalidate: 10}})
+  let data = await res.json()
+  let tabdata = await Promise.all(data.map(async (item: any) =>{
+    let itemID = item._id.toString().trim()
+    let links = await fetch(`http://5.135.163.229:3002/linkMarks/${userID}&${itemID}`, {next: {revalidate: 10}})
+    let linksData = await links.json()
+    let linkContent = linksData.map((link: any) => {
+      return {
+        id: link._id,
+        image: link.image,
+        link: link.link
+      }
+    })
+    return{
+      uId: userID,
+      tabId: item._id,
+      tabIndex: item.tabIndex,
+      tabLabel: item.tabLabel,
+      tabContent: linkContent
+    }
+  }))
+  return tabdata
+}
+export async function getNavContent(userID: number) {
+  let res = await fetch(`http://localhost:3002/bookTabs/${userID}`, {next: {revalidate: 10}})
+  let data = await res.json()
+  let tabdata = await Promise.all(data.map(async (item: any) =>{
+    let itemID = item._id.toString().trim()
+    let links = await fetch(`http://localhost:3002/bookMarks/${userID}&${itemID}`, {next: {revalidate: 10}})
+    let linksData = await links.json()
+    let linkContent = linksData.map((link: any) => {
+      return {
+        id: link._id,
+        label: link.label,
+        link: link.link
+      }
+    })
+    return{
+      uId: userID,
+      tabId: item._id,
+      tabIndex: item.tabIndex,
+      tabLabel: item.tabLabel,
+      tabContent: linkContent
+    }
+  }))
+  return tabdata
+}
+
+export async function getUserLinks(userId: number) {
+  let res = await fetch(`http://localhost:3002/links/${userId}`, {next: {revalidate: 10}})
+  const data = await res.json()
+  return data
 }

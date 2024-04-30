@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
-const linkMarkSchema = new mongoose.Schema({
+const bookMarkSchema = new mongoose.Schema({
     uId: {
         type: Number
     },
     tabId: {
         type: String
     },
-    image: {
+    label: {
         type: String
     },
     link: {
@@ -16,5 +16,5 @@ const linkMarkSchema = new mongoose.Schema({
     
 })
 
-const LinkMark = mongoose.model('LinkMark', linkMarkSchema);
-module.exports = LinkMark;
+const BookMark = mongoose.model('BookMark', bookMarkSchema);
+module.exports = BookMark;

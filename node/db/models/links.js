@@ -8,7 +8,7 @@ const linkSchema = new mongoose.Schema({
         type: String,
     },
     site: {
-        type: [String]
+        type: String
     }
 })
 

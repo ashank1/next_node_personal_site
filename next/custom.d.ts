@@ -1,11 +1,13 @@
 declare global {
 interface ItabData {
-    tabId: number;
+    uId: number;
+    tabId: any;
+    tabIndex: number;
     tabLabel: string;
     tabContent: EtabContent
 }
 interface ItabContent {
-    id: number;
+    id: any;
     image: string;
     link: string;
 }

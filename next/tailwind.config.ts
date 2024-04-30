@@ -24,7 +24,7 @@ const config: Config = {
   },
   //https://www.npmjs.com/package/tw-colors
   plugins: [
-    nextui(),
+    nextui({}),
     createThemes({
       light: { 
         'background': '#f3f4f6',

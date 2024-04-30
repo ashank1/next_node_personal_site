@@ -15,12 +15,13 @@ const ThemePicker = () => {
   const handleChange = (e : string) => { setTheme(e); }
 
   return (
-    <select value={theme} className='bg-cover p-2 rounded-md' onChange={e => handleChange(e.target.value)}>
+    <div>
+    <select value={theme} className='p-2 rounded-md' onChange={e => handleChange(e.target.value)}>
       <option value="system">System</option>
       <option value="dark">Dark</option>
       <option value="light">Light</option>
-      
     </select>
+    </div>
   )
 }
 export default ThemePicker
