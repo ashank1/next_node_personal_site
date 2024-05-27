@@ -1,11 +1,16 @@
 'use client'
-import { Spinner, Card, Accordion, AccordionItem, Listbox, ListboxItem,  } from '@nextui-org/react'
+import { Spinner, Card, Accordion, AccordionItem, Listbox, ListboxItem, Button,  } from '@nextui-org/react'
 import Link from 'next/link';
 import React, { Suspense, useState } from 'react'
+import { sessionCookieDelete } from '../lib/cookieHandler'
+import { redirect } from 'next/navigation';
 
-export default function hubNav({userStatus, steamLink, userNavLink}: {userStatus: any, steamLink: string, userNavLink: any}) {
-  const [admin, setAdmin] = useState(true)
-  
+export default function hubNav({userStatus, steamLink, userNavLink, admin}: {userStatus: any, steamLink: string, userNavLink: any, admin: boolean}) {
+  const handleLogout = () => {
+    sessionCookieDelete(); 
+    redirect('/login');    
+  }
+  console.log(admin)
     let bgStatusColor  = "bg-slate-700"; let brStatusColor = "br-slate-700";
     if (userStatus[0].steam.status == "Currently Online") {
         bgStatusColor =  "bg-indigo-700"; brStatusColor = "border-indigo-700";
@@ -67,6 +72,9 @@ export default function hubNav({userStatus, steamLink, userNavLink}: {userStatus
               )
             })}
           </Accordion>
+        </div>
+        <div >
+          <Button isIconOnly onPress={(handleLogout)} className='bg-red-500'/>
         </div>
     </div>
   )

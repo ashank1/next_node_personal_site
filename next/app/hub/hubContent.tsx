@@ -1,5 +1,5 @@
 'use client'
-import React, { Suspense, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation';
 import { AiFillSetting } from "react-icons/ai";
 import { Spinner, Tabs, Tab, Button} from "@nextui-org/react";
@@ -15,8 +15,6 @@ export default function content({tabData, userLink, userNavLink}: {tabData: Etab
     setEditTabs(!editTabs)
     router.refresh()
   }
-
-  
   return (
     <div className='flex flex-col w-full h-full z-3 overflow-hidden'>
     <Tabs fullWidth variant='light'
@@ -54,7 +52,9 @@ export default function content({tabData, userLink, userNavLink}: {tabData: Etab
   )
 }
 
-/*<Tab key="notepad" title="Notepad" className='py-0 flex flex-wrap' isDisabled>
+/*
+preserved code snippet for a cut feature
+<Tab key="notepad" title="Notepad" className='py-0 flex flex-wrap' isDisabled>
         <div id="notepad-content" 
         className='relative border-2 border-bold 
         rounded-2xl flex flex-grow 

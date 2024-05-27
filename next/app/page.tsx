@@ -1,17 +1,14 @@
 'use client'
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import ThemePicker from "@/components/themePicker";
 import { Spinner, Tab, Tabs, Button } from "@nextui-org/react";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Input, Checkbox, Link} from "@nextui-org/react";
-
+import { useAuthContext } from './lib/authProvider'
 
 export default function Home() {
-  
   return (
     <div className="relative h-dvh w-dvw overflow-auto">
-      
-    
     </div>
   );
 }

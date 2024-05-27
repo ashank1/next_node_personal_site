@@ -13,6 +13,9 @@ router.get('/user', userController.getUsers)//Done
 router.get('/user/:id', userController.getUserById)
 router.post('/user', userController.addUser)
 router.put('/user/:id', userController.updateUser)
+router.post('/login/', userController.loginUser)//Done
+router.delete('/logout/', userController.logoutUser)
+router.get('/validate/:params', userController.getSession)//Done
 
 //user status routes
 router.get('/userstatus', userStatusController.getUserStatus)//Done

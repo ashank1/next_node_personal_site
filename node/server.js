@@ -30,7 +30,7 @@ mongoose.connect(process.env.MONGO_SERVER_LINK)
 mongoose.connection.on('connected', async () => {
   //On succeful connection
   console.log("connected")
-  /*let steamInfo = []; let steamLinks = [];
+  let steamInfo = []; let steamLinks = [];
   //starts process every minute to updat data on database
   cron.schedule('* * * * * *', async () => {
   //gets all user ids
