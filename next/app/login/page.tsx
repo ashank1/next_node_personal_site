@@ -19,13 +19,36 @@ export default function login() {
         await sessionCookieCreate(data)
     }
   return (
-    <div>
-        login
-        <form >
+    <div className='h-screen w-screen flex flex-auto items-center justify-center'>
+        <div className='h-full w-full 
+        max-w-[70%] max-h-[70%] 
+        flex flex-col 
+        items-center justify-center
+        bg-cover rounded-3xl border-2 border-acent'>
+          <div className='h-full w-full 
+          max-w-[75%] max-h-[75%] p-4 
+          flex flex-col gap-4 overflow-x-auto
+          rounded-3xl border-2 border-acent'>
+            <h1>login</h1>
             <Input type="text" label="username" onChange={(e) => {setUsername(e.target.value)}}/>
             <Input type="password" label="password" onChange={(e) => {setPassword(e.target.value)}}/>
             <Button onClick={() => {handleSubmit()}}> Login </Button>
-        </form>
+            <div className='flex justify-center items-center'>
+              <p>Registration is made upon reqest of service host, new password has to be requested or will be provided when needed</p>
+            </div>
+          </div>
+        </div>
     </div>
   )
 }
+
+/*
+<div className='flex flex-auto items-center justify-center'>
+        
+        <div className=' flex flex-col content-center gap-4'>
+            
+        </div>
+      </div>
+
+
+*/

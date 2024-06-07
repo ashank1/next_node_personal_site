@@ -10,7 +10,6 @@ export default function hubNav({userStatus, steamLink, userNavLink, admin}: {use
     sessionCookieDelete(); 
     redirect('/login');    
   }
-  console.log(admin)
     let bgStatusColor  = "bg-slate-700"; let brStatusColor = "br-slate-700";
     if (userStatus[0].steam.status == "Currently Online") {
         bgStatusColor =  "bg-indigo-700"; brStatusColor = "border-indigo-700";
@@ -38,13 +37,16 @@ export default function hubNav({userStatus, steamLink, userNavLink, admin}: {use
         bg-cover overflow-y-auto border-2 border-bold'>
           <Listbox aria-label='List of links'>
             <ListboxItem key="" textValue='Link to page' aria-label='Link to page'>
+              <Link href="/admin">Admin Page</Link>
+              </ListboxItem>
+            <ListboxItem key="" textValue='Link to page' aria-label='Link to page'>
               <Link href="/admin/users">User Management</Link>
             </ListboxItem>
             <ListboxItem key="" textValue='Link to page' aria-label='Link to page'>
-              <Link href="/admin/page">Page Editor</Link>
+              <Link href="/admin/page">Site Editor</Link>
               </ListboxItem>
             <ListboxItem key="" textValue='Link to page' aria-label='Link to page'>
-              <Link href="/projects">Project List</Link>
+              <Link href="/admin/projects">Project List</Link>
               </ListboxItem>
           </Listbox>
         </div>: null

@@ -12,6 +12,7 @@ const userBookTabsController = require('./db/controllers/userBookTabsController'
 router.get('/user', userController.getUsers)//Done
 router.get('/user/:id', userController.getUserById)
 router.post('/user', userController.addUser)
+router.delete('/user/:id', userController.deleteUser)
 router.put('/user/:id', userController.updateUser)
 router.post('/login/', userController.loginUser)//Done
 router.delete('/logout/', userController.logoutUser)

@@ -62,17 +62,17 @@ export async function getSessionInfo(session: any) {
 }
 //
 export async function getStatusData(userID: number) {
-  let res = await fetch(`http://5.135.163.229:3002/userstatus/${userID}`)
+  let res = await fetch(`http://5.135.163.229:3002/userstatus/${userID}`, {keepalive: true})
   const data = await res.json()
   return data
 }
 
 export async function getTabContent(userID: number) {
-  let res = await fetch(`http://5.135.163.229:3002/tabs/${userID}`)
+  let res = await fetch(`http://5.135.163.229:3002/tabs/${userID}`, {keepalive: true})
   let data = await res.json()
   let tabdata = await Promise.all(data.map(async (item: any) =>{
     let itemID = item._id.toString().trim()
-    let links = await fetch(`http://5.135.163.229:3002/linkMarks/${userID}&${itemID}`)
+    let links = await fetch(`http://5.135.163.229:3002/linkMarks/${userID}&${itemID}`, {keepalive: true})
     let linksData = await links.json()
     let linkContent = linksData.map((link: any) => {
       return {
@@ -92,11 +92,11 @@ export async function getTabContent(userID: number) {
   return tabdata
 }
 export async function getNavContent(userID: number) {
-  let res = await fetch(`http://localhost:3002/bookTabs/${userID}`)
+  let res = await fetch(`http://localhost:3002/bookTabs/${userID}`, {keepalive: true})
   let data = await res.json()
   let tabdata = await Promise.all(data.map(async (item: any) =>{
     let itemID = item._id.toString().trim()
-    let links = await fetch(`http://localhost:3002/bookMarks/${userID}&${itemID}`)
+    let links = await fetch(`http://localhost:3002/bookMarks/${userID}&${itemID}`, {keepalive: true})
     let linksData = await links.json()
     let linkContent = linksData.map((link: any) => {
       return {
@@ -117,7 +117,7 @@ export async function getNavContent(userID: number) {
 }
 
 export async function getUserLinks(userId: number) {
-  let res = await fetch(`http://localhost:3002/links/${userId}`)
+  let res = await fetch(`http://localhost:3002/links/${userId}`, {keepalive: true})
   const data = await res.json()
   return data
 }
